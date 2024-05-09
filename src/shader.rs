@@ -39,7 +39,6 @@ use bevy::render::render_resource::TextureFormat;
 use bevy::render::render_resource::TextureSampleType;
 use bevy::render::renderer::RenderContext;
 use bevy::render::renderer::RenderDevice;
-use bevy::render::texture::BevyDefault;
 use bevy::render::view::ViewTarget;
 use bevy::render::RenderApp;
 

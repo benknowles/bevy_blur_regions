@@ -18,6 +18,7 @@ pub fn compute_blur_regions<const N: usize>(
     mut blur_regions_cameras: Query<(&Camera, &mut BlurRegionsCamera<N>)>,
     primary_window: Query<Entity, With<PrimaryWindow>>,
     windows: Query<&Window>,
+    ui_scale: Res<UiScale>,
 ) {
     for (camera, mut blur_regions) in &mut blur_regions_cameras {
         let Some(target) = camera.target.normalize(primary_window.get_single().ok()) else {
@@ -35,8 +36,8 @@ pub fn compute_blur_regions<const N: usize>(
         for (node, transform) in &nodes {
             let translation = transform.translation();
             let region = Rect::from_center_size(
-                translation.xy() * window.scale_factor(),
-                node.size() * window.scale_factor(),
+                translation.xy() * window.scale_factor() * ui_scale.0,
+                node.size() * window.scale_factor() * ui_scale.0,
             );
             blur_regions.blur(region);
         }
