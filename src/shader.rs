@@ -172,7 +172,7 @@ impl<const N: usize> FromWorld for BlurRegionsPipeline<N> {
                 shader_defs: vec![ShaderDefVal::UInt("MAX_BLUR_REGIONS_COUNT".into(), N as u32)],
                 entry_point: "fragment".into(),
                 targets: vec![Some(ColorTargetState {
-                    format: TextureFormat::bevy_default(),
+                    format: TextureFormat::Rgba16Float,
                     blend: None,
                     write_mask: ColorWrites::ALL,
                 })],
