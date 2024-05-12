@@ -39,6 +39,7 @@ use bevy::render::render_resource::TextureFormat;
 use bevy::render::render_resource::TextureSampleType;
 use bevy::render::renderer::RenderContext;
 use bevy::render::renderer::RenderDevice;
+use bevy::render::texture::BevyDefault;
 use bevy::render::view::ViewTarget;
 use bevy::render::RenderApp;
 
@@ -171,7 +172,8 @@ impl<const N: usize> FromWorld for BlurRegionsPipeline<N> {
                 shader_defs: vec![ShaderDefVal::UInt("MAX_BLUR_REGIONS_COUNT".into(), N as u32)],
                 entry_point: "fragment".into(),
                 targets: vec![Some(ColorTargetState {
-                    format: TextureFormat::Rgba16Float,
+                    // format: TextureFormat::Rgba16Float,
+                    format: TextureFormat::bevy_default(),
                     blend: None,
                     write_mask: ColorWrites::ALL,
                 })],
